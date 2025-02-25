@@ -1,0 +1,25 @@
+import ensurepip
+ensurepip.bootstrap()
+
+import os
+os.system("pip install pandas")
+
+# set the file path
+file_path = 'dirtydata.csv'
+
+# read the file using pandas
+data = pd.read_csv(file_path, na_values=['NaN'])
+
+# read the file using pandas and remove special characters (€)
+data = pd.read.csv(file_path)
+data = data.replace({'€': ' '}, regex = True)
+
+# drop rows with missing data
+data = data.dropna()
+
+# save cleaned data to a new file
+cleaned_file_path = 'cleandata.csv'
+data.to_csv(cleaned_file_path, index = False)
+
+print("I saved the clean file here: ", cleaned_file_path)
+
