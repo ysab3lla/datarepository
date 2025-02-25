@@ -14,7 +14,7 @@ data = pd.read_csv(file_path, na_values=['NaN'])
 data = pd.read.csv(file_path)
 data = data.replace({'€': ' '}, regex = True)
 
-# drop rows with missing data
+# drop and delete rows with missing data
 data = data.dropna()
 
 # save cleaned data to a new file
